@@ -1,0 +1,46 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+
+	<ui:define name="titulo">Novo Professor</ui:define>
+
+	<ui:define name="corpo">
+		<f:metadata>
+			<o:viewParam name="professor"
+				value="#{cadastroProfessorBean.professor}" />
+		</f:metadata>
+
+		<h1>Novo Professor</h1>
+
+		<h:form id="frmCadastro">
+			<p:messages id="messages" autoUpdate="true" closable="true" />
+
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:commandButton value="Salvar" id="botaoSalvar"
+						action="#{cadastroProfessorBean.salvar}" update="frmCadastro" />
+				</p:toolbarGroup>
+				<p:toolbarGroup>
+					<p:button value="Pesquisa"
+						outcome="/professor/PesquisaProfessores.xhtml" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:panelGrid columns="2" id="painel"
+				style="width: 100%; margin-top:20px" columnClasses="rotulo, campo">
+				<p:outputLabel value="Nome" for="nomeProfessor" />
+				<p:inputText id="nomeProfessor" size="20" maxlength="20"
+					value="#{cadastroProfessorBean.professor.nome}" />
+					<p:outputLabel value="Instrumento" for="instrumento" />
+				<p:inputText id="instrumento" size="20" maxlength="20"
+					value="#{cadastroProfessorBean.professor.instrumento}" />
+					<p:outputLabel value="Preço da Aula" for="precoAula" />
+				<p:inputText id="precoAula" size="20" maxlength="20"
+					value="#{cadastroProfessorBean.professor.precoAula}" />
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+	</ui:composition>
